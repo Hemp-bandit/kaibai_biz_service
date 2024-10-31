@@ -1,7 +1,6 @@
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["interactiveTransactions"]
-  binaryTargets   = ["linux-musl", "windows", "debian-openssl-3.0.x"]
+  provider      = "prisma-client-js"
+  binaryTargets = ["linux-musl", "windows", "debian-openssl-3.0.x"]
 }
 
 datasource db {
@@ -19,9 +18,12 @@ model user {
   create_time DateTime
   update_time DateTime @updatedAt
   password    String
-  phone       String
-  picture     String
-  introduce   String
+  name        String   @unique
+  phone       String   @unique
+  picture     String   @default("")
+  introduce   String   @default("")
+
+  @@index([phone, name])
 }
 
 model product {

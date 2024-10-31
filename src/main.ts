@@ -2,8 +2,13 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
-import { INestApplication, Logger } from '@nestjs/common';
+import { INestApplication, Logger, ValidationPipe, ValidationPipeOptions } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import ErrorCodeExceptionFilter from './commom/errorCode-exception.filter';
+import { HttpExceptionFilter } from './commom/http-exception.filter';
+import { PrismaExceptionFilter } from './commom/prisma-exception.filter';
+import { RequestGuard } from './commom/request.guard';
+import { ResponseTransformInterceptor } from './commom/response-transform.interceptor';
 
 dotenv.config();
 
@@ -21,11 +26,20 @@ function configOpenApi(app: INestApplication) {
 }
 
 
+const validationOptions: ValidationPipeOptions = {
+  transform: true,
+  transformOptions: { enableImplicitConversion: true }
+};
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
   app.use(helmet({ contentSecurityPolicy: false }));
+
+  app.useGlobalFilters(new PrismaExceptionFilter(), new ErrorCodeExceptionFilter(), new HttpExceptionFilter()); // 注册全局错误过滤器
+  app.useGlobalPipes(new ValidationPipe(validationOptions));
+  app.useGlobalInterceptors(new ResponseTransformInterceptor());
+  app.useGlobalGuards(new RequestGuard());
 
   configOpenApi(app);
   const defaultPort = 3000;
