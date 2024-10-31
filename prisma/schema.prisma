@@ -13,15 +13,21 @@ enum product_sattus {
   DOWN
 }
 
+enum user_status {
+  ENABLE
+  DISABLE
+}
+
 model user {
-  id          Int      @id @default(autoincrement())
+  id          Int         @id @default(autoincrement())
   create_time DateTime
-  update_time DateTime @updatedAt
+  update_time DateTime    @updatedAt
   password    String
-  name        String   @unique
-  phone       String   @unique
-  picture     String   @default("")
-  introduce   String   @default("")
+  name        String      @unique
+  phone       String      @unique
+  picture     String      @default("")
+  introduce   String      @default("")
+  status      user_status @default(ENABLE)
 
   @@index([phone, name])
 }

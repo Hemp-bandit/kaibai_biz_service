@@ -1,7 +1,8 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { user } from "@prisma/client";
+import { $Enums, user } from "@prisma/client";
 
 export class User implements user {
+  status: $Enums.user_status;
   @ApiProperty() name: string;
   @ApiProperty() id: number;
   @ApiProperty() create_time: Date;
