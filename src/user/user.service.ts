@@ -4,7 +4,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from '@src/prisma/prisma.service';
 import BizError from '@src/error/biz_error';
 import ERROR_CODE from '@src/error';
-import { get_time } from '@src/commom/utile';
+import { get_time } from '@src/common/utile';
 
 @Injectable()
 export class UserService {

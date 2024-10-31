@@ -4,11 +4,11 @@ import helmet from 'helmet';
 import dotenv from 'dotenv';
 import { INestApplication, Logger, ValidationPipe, ValidationPipeOptions } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import ErrorCodeExceptionFilter from './commom/errorCode-exception.filter';
-import { HttpExceptionFilter } from './commom/http-exception.filter';
-import { PrismaExceptionFilter } from './commom/prisma-exception.filter';
-import { RequestGuard } from './commom/request.guard';
-import { ResponseTransformInterceptor } from './commom/response-transform.interceptor';
+import ErrorCodeExceptionFilter from './common/errorCode-exception.filter';
+import { HttpExceptionFilter } from './common/http-exception.filter';
+import { PrismaExceptionFilter } from './common/prisma-exception.filter';
+import { RequestGuard } from './common/request.guard';
+import { ResponseTransformInterceptor } from './common/response-transform.interceptor';
 
 dotenv.config();
 
