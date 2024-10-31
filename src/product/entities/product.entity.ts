@@ -9,6 +9,6 @@ export class Product implements product {
   @ApiProperty() picture: string;
   @ApiProperty() price: number;
   @ApiProperty() store_count: number;
-  @ApiProperty() status: $Enums.product_sattus;
+  @ApiProperty() status: $Enums.product_status;
 }
 
