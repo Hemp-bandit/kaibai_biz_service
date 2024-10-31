@@ -1,0 +1,38 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["linux-musl", "windows", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum product_sattus {
+  UP
+  DOWN
+}
+
+model user {
+  id          Int      @id @default(autoincrement())
+  create_time DateTime
+  update_time DateTime @updatedAt
+  password    String
+  name        String   @unique
+  phone       String   @unique
+  picture     String   @default("")
+  introduce   String   @default("")
+
+  @@index([phone, name])
+}
+
+model product {
+  id          Int            @id @default(autoincrement())
+  create_time DateTime
+  update_time DateTime       @updatedAt
+  picture     String
+  name        String
+  price       Int            @default(0)
+  store_count Int            @default(0)
+  status      product_sattus @default(DOWN)
+}
