@@ -1,18 +1,6 @@
+export * from './user'
 
-// global {
-//   namespace NodeJS {
-//     interface ProcessEnv {
-//       NODE_ENV: string,
-//       DATABASE_URL: string,
-//       PORT: number
-//     }
-//   }
-// }
-
-declare global {
-  namespace NodeJS {
-    interface ProcessEnv {
-      CUSTOM_ENV_VAR: string;
-    }
-  }
+export type T_List_rsp<T> = {
+  list: Array<T>,
+  total: number
 }

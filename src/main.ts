@@ -14,14 +14,12 @@ dotenv.config();
 
 function configOpenApi(app: INestApplication) {
   const options = new DocumentBuilder()
-    .setTitle(`TestPortal接口文档`)
+    .setTitle(`kaibai user接口文档`)
     .setVersion('0.0.1')
     .setContact('wyswill', '', 'yansong.wang3@gientech.con')
     .build();
 
   const document = SwaggerModule.createDocument(app, options);
-  const MODE = process.env.MODE;
-  Logger.log(MODE, 'mode');
   SwaggerModule.setup('/doc', app, document, { jsonDocumentUrl: '/doc.json' });
 }
 

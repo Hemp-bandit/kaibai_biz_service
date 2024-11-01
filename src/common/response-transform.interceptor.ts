@@ -9,15 +9,15 @@ export class ResponseTransformInterceptor implements NestInterceptor {
     intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
         // 处理请求
         return next.handle().pipe(
-                map((data) => {
-                    // 返回数据
-                    return {
-                        respCode: 0,
-                        errorCode: '0',
-                        respMsg: '请求成功',
-                        data
-                    };
-                })
-            );
+            map((data) => {
+                // 返回数据
+                return {
+                    respCode: 0,
+                    errorCode: 0,
+                    respMsg: '请求成功',
+                    data
+                };
+            })
+        );
     }
 }
