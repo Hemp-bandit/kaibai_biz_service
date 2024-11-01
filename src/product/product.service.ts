@@ -1,11 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import { PrismaService } from '@src/prisma/prisma.service';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
+import ERROR_CODE from '@src/error';
+import BizError from '@src/error/biz_error';
 
 @Injectable()
 export class ProductService {
-  create(createProductDto: CreateProductDto) {
-    
+  @Inject() prisma: PrismaService;
+  async create(createProductDto: CreateProductDto) {
 
 
     return 'This action adds a new product';
@@ -15,7 +18,11 @@ export class ProductService {
     return `This action returns all product`;
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
+    if (!id) throw new BizError(ERROR_CODE.PRODUCT_ID_IS_NULL, "产品id为空");
+    
+
+
     return `This action returns a #${id} product`;
   }
 
