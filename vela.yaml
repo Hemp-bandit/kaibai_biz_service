@@ -1,0 +1,7 @@
+createTime: "0001-01-01T00:00:00Z"
+name: kaibaiservice
+services:
+  kaibai:
+    image: registry.cn-hangzhou.aliyuncs.com/wyswill_docker/kai_bai_service:0.0.1
+    type: webservice
+updateTime: "0001-01-01T00:00:00Z"

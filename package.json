@@ -13,8 +13,8 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "test:cov": "jest --coverage",
-    "build:img": "docker build -t registry.cn-hangzhou.aliyuncs.com/wyswill_docker/kai_bai_service:0.0.1 -f ./dockerfile .",
-    "img:push":"docker push registry.cn-hangzhou.aliyuncs.com/wyswill_docker/kai_bai_service:0.0.1"
+    "build:img": "sh build.sh build_img",
+    "img:push":"sh build.sh push_img"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
