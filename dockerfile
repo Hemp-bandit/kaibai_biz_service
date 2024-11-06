@@ -1,13 +1,28 @@
+FROM balenalib/amd64-ubuntu-node:20-latest as builder
+
+WORKDIR /app
+COPY ./prisma ./prisma
+COPY ./src ./src
+COPY ./.env .
+COPY ./package.json .
+COPY ./package-lock.json .
+COPY ./tsconfig.json .
+COPY ./tsconfig.build.json .
+COPY ./nest-cli.json .
+
+RUN npm install --save-prod --registry=https://registry.npmmirror.com/ &&\
+  npx prisma generate &&\
+  npm run build
+
 FROM balenalib/amd64-ubuntu-node:20-latest
 
-WORKDIR /root/kaibai
+WORKDIR /root
 
-COPY ./dist ./dist
-# COPY ./node_modules ./node_modules
-COPY prisma ./prisma
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+
+
 COPY ./package.json .
 COPY .env .
-COPY run.sh .
 EXPOSE 3000
-
-CMD [ "sh","run.sh" ]
+CMD [ "node","./dist/main.js" ]

@@ -12,12 +12,8 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
-    "build:img": "docker buildx build -t swr.cn-east-3.myhuaweicloud.com/cooper/kai_bai_service:0.0.1 -f ./docker_build .",
+    "build:img": "docker build -t swr.cn-east-3.myhuaweicloud.com/cooper/kai_bai_service:0.0.1 -f ./dockerfile .",
     "docker:push":"docker push swr.cn-east-3.myhuaweicloud.com/cooper/kai_bai_service:0.0.1"
   },
   "dependencies": {
