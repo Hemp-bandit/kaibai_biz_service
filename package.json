@@ -13,8 +13,8 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "test:cov": "jest --coverage",
-    "build:img": "docker build -t swr.cn-east-3.myhuaweicloud.com/cooper/kai_bai_service:0.0.1 -f ./dockerfile .",
-    "docker:push":"docker push swr.cn-east-3.myhuaweicloud.com/cooper/kai_bai_service:0.0.1"
+    "build:img": "docker build -t registry.cn-hangzhou.aliyuncs.com/wyswill_docker/kai_bai_service:0.0.1 -f ./dockerfile .",
+    "img:push":"docker push registry.cn-hangzhou.aliyuncs.com/wyswill_docker/kai_bai_service:0.0.1"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
