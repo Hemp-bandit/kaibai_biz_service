@@ -1,0 +1,21 @@
+name: CI
+on:
+  pull_request:
+    branches: ['master']
+    types: [closed]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: pull repo
+        shell: bash
+        run: |
+          echo "git clone http://192.168.2.128:3000/wyswill/kai_bai/kaibai_user_service"
+          git clone  http://192.168.2.128:3000/kai_bai/kaibai_user_service .
+          ls -al
+      - name: build_img
+        run: bash build.sh build_img
+      - name: login_ali
+        run: bash build.sh login_ali
+      - name: push_img
+        run: bash build.sh push_img
