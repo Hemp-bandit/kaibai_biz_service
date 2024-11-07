@@ -22,10 +22,15 @@ export class ProductService {
   }
 
   async findAll(data: FindAllProduct): Promise<T_List_rsp<ProductModule>> {
+    const take = data.take;
+    const skip = data.offset;
+    Reflect.deleteProperty(data, 'take')
+    Reflect.deleteProperty(data, 'offset')
     const [list, total] = await Promise.all([
       this.prisma.product.findMany({
-        take: data.take,
-        skip: data.offset
+        where: data,
+        take,
+        skip
       }),
       this.prisma.product.count()
     ])

@@ -8,12 +8,12 @@ import { ProductService } from './product.service';
 export class ProductController {
   constructor(private readonly productService: ProductService) { }
 
-  @Post()
+  @Post("/create")
   create(@Body() createProductDto: CreateProductDto) {
     return this.productService.create(createProductDto);
   }
 
-  @Post()
+  @Post("/findAll")
   findAll(@Body() data: FindAllProduct) {
     return this.productService.findAll(data);
   }
