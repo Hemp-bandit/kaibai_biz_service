@@ -17,8 +17,8 @@ jobs:
           git clone -b dev http://192.168.2.128:3000/kai_bai/kaibai_user_service .
           ls -al
       - name: build_img
-        run: sh build.sh build_img
+        run: bash build.sh build_img
       - name: login_ali
-        run: sh build.sh login_ali
+        run: bash build.sh login_ali
       - name: push_img
-        run: sh build.sh push_img
+        run: bash build.sh push_img
