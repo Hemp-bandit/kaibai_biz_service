@@ -11,7 +11,7 @@ jobs:
         shell: bash
         run: |
           echo "git clone http://192.168.2.128:3000/wyswill/kai_bai/kaibai_user_service"
-          git clone -b dev http://192.168.2.128:3000/kai_bai/kaibai_user_service .
+          git clone  http://192.168.2.128:3000/kai_bai/kaibai_user_service .
           ls -al
       - name: build_img
         run: bash build.sh build_img
