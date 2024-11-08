@@ -16,7 +16,7 @@ function push_img() {
 }
 
 function login_ali(){
-  docker login --username=$secrets.ALI_IMG_HUB_ACOUNT -p $secrets.ALI_CLOND_HUB_PASS registry.cn-hangzhou.aliyuncs.com
+  docker login --username=15717827650 -p wyswill4290  registry.cn-hangzhou.aliyuncs.com
 }
 
 case $1 in
