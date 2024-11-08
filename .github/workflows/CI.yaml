@@ -16,6 +16,8 @@ jobs:
       - name: build_img
         run: bash build.sh build_img
       - name: login_ali
-        run: bash build.sh login_ali
+        shell: bash
+        run: |
+          docker login --username=${{secrets.ALI_IMG_HUB_ACOUNT}} -p ${{secrets.ALI_CLOND_HUB_PASS}} registry.cn-hangzhou.aliyuncs.com
       - name: push_img
         run: bash build.sh push_img
