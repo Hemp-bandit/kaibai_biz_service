@@ -13,11 +13,12 @@ jobs:
           echo "git clone "
           git clone  https://github.com/Hemp-bandit/kaibai_biz_service .
           ls -al
-      - name: build_img
-        run: bash build.sh build_img
+      # - name: build_img
+      #   run: bash build.sh build_img
       - name: login_ali
         shell: bash
         run: |
-          docker login --username=15717827650 -p ${{secrets.ALI_CLOND_HUB_PASS}} registry.cn-hangzhou.aliyuncs.com
-      - name: push_img
-        run: bash build.sh push_img
+          echo ${{ secrets.ALI_CLOND_HUB_PASS }}
+          # docker login --username=15717827650 -p ${{secrets.ALI_CLOND_HUB_PASS}} registry.cn-hangzhou.aliyuncs.com
+      # - name: push_img
+      #   run: bash build.sh push_img
