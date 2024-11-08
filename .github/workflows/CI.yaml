@@ -10,8 +10,8 @@ jobs:
       - name: pull repo
         shell: bash
         run: |
-          echo "git clone http://192.168.2.128:3000/wyswill/kai_bai/kaibai_user_service"
-          git clone  http://192.168.2.128:3000/kai_bai/kaibai_user_service .
+          echo "git clone "
+          git clone  https://github.com/Hemp-bandit/kaibai_biz_service .
           ls -al
       - name: build_img
         run: bash build.sh build_img
