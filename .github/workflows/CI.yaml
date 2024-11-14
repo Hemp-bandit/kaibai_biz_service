@@ -25,11 +25,5 @@ jobs:
           registry: registry.cn-hangzhou.aliyuncs.com
           username: ${{ secrets.ALI_IMG_HUB_USER }}
           password: ${{ secrets.ALI_IMG_HUB_PASS }}
-      # - name: login_ali
-      #   shell: bash
-      #   run: |
-      #     # bash build.sh login_ali
-      #      echo secrets.ALI_IMG_HUB_PASS is${{ secrets.ALI_IMG_HUB_PASS }}
-      #      # # docker login --username=15717827650 -p ${{secrets.ALI_CLOND_HUB_PASS}} registry.cn-hangzhou.aliyuncs.com
       - name: push_img
         run: bash build.sh push_img
