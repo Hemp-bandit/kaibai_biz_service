@@ -1,7 +1,7 @@
 #/bin/sh
 git_hash=$(git rev-parse --short=8 HEAD)
 registry="registry.cn-hangzhou.aliyuncs.com/wyswill_docker"
-pkg_name="kai_bai_service"
+pkg_name="kai_bai_user_service"
 
 docker_tag="$registry/$pkg_name:$git_hash"
 echo "docker_tag: $docker_tag"
@@ -16,7 +16,7 @@ function push_img() {
 }
 
 function login_ali(){
-  docker login --username=15717827650 -p wyswill4290  registry.cn-hangzhou.aliyuncs.com
+  docker login -u=15717827650 -p wyswill4290  registry.cn-hangzhou.aliyuncs.com
 }
 
 case $1 in

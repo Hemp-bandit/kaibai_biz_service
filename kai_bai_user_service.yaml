@@ -16,7 +16,7 @@ spec:
         - name: aliregistry
       containers:
         - name: nginx
-          image: registry.cn-hangzhou.aliyuncs.com/wyswill_docker/kai_bai_service:a93b5d3a
+          image: registry.cn-hangzhou.aliyuncs.com/wyswill_docker/kai_bai_user_service:a93b5d3a
           ports:
             - containerPort: 3000
           resources:
