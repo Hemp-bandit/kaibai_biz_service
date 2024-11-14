@@ -7,6 +7,11 @@ spec:
     matchLabels:
       app: kaibai-user
   replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
   template:
     metadata:
       labels:
@@ -15,17 +20,14 @@ spec:
       imagePullSecrets:
         - name: aliregistry
       containers:
-        - name: nginx
-          image: registry.cn-hangzhou.aliyuncs.com/wyswill_docker/kai_bai_user_service:a93b5d3a
+        - name: kaibai-user-deploy
+          image: registry.cn-hangzhou.aliyuncs.com/wyswill_docker/kai_bai_user_service:0d0c4dfd
           ports:
             - containerPort: 3000
           resources:
-            requests:
-              memory: "300Mi"
-              cpu: "500m"
             limits:
-              memory: "500Mi"
-              cpu: "1000m"
+              memory: "1000Mi"
+              cpu: "500m"
 ---
 apiVersion: v1
 kind: Service
@@ -40,4 +42,4 @@ spec:
   ports:
     - port: 3000
       targetPort: 3000
-      nodePort: 3000
+      nodePort: 30000
