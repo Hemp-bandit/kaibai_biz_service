@@ -1,8 +1,11 @@
 name: CI
 on:
-  pull_request:
-    branches: ['master']
-    types: [closed]
+  push:
+    branches:
+      - dev
+  # pull_request:
+  #   branches: ['master']
+  #   types: [closed]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,7 +22,5 @@ jobs:
         shell: bash
         run: |
           bash build.sh login_ali
-          # echo ${{ secrets.ali_img_registry.ALI_IMG_HUB_PASS }}
-          # # docker login --username=15717827650 -p ${{secrets.ALI_CLOND_HUB_PASS}} registry.cn-hangzhou.aliyuncs.com
       - name: push_img
         run: bash build.sh push_img
