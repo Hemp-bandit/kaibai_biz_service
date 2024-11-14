@@ -23,6 +23,6 @@ COPY --from=builder /app/node_modules ./node_modules
 
 
 COPY ./package.json .
-ENV DATABASE_URL=mysql://root:wyswill4290@mysql-host-svc.default.svc.cluster.local:3309/kaibai 
+ENV DATABASE_URL=mysql://root:wyswill4290@mysql.default.svc.cluster.local:3306/kaibai 
 EXPOSE 3000
 CMD [ "node","./dist/main.js" ]
