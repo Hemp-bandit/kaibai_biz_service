@@ -21,3 +21,13 @@ jobs:
           bash build.sh login_ali
       - name: push_img
         run: bash build.sh push_img
+      - name: Run sshpass commands
+        uses: matheusvanzan/sshpass-action@v2
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          user: ${{ secrets.SERVER_USER }}
+          pass: ${{ secrets.SERVER_PASS }}
+          run: |
+            ls -al;
+            echo $docker_tag;
+            # kubectl set image deployment/kaibai-user-deployment 
