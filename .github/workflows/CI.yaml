@@ -21,3 +21,5 @@ jobs:
           bash build.sh login_ali
       - name: push_img
         run: bash build.sh push_img
+      - name: update_img
+        run: bash build.sh update_img
