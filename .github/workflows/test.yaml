@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: ["dev"]:
+    branches: ["dev"]
   # pull_request:
   #   branches: ["master"]
   #   types: [closed]
@@ -13,7 +13,7 @@ jobs:
         shell: bash
         run: |
           echo "git clone "
-          git clone  https://github.com/Hemp-bandit/kaibai_biz_service .
+          git clone -b dev https://github.com/Hemp-bandit/kaibai_biz_service .
           ls -al
       - name: build_img
         run: bash build.sh build_img
@@ -23,3 +23,5 @@ jobs:
           bash build.sh login_ali
       - name: push_img
         run: bash build.sh push_img
+      - name: update_img
+        run: bash build.sh update_img
